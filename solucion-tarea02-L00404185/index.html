@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación de Tecnologías Web</title>
+  <link rel="icon" href="img/logo_ESPE.png">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #006b3f; /* verde institucional */
+      color: white;
+      padding: 10px 20px;
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #00a86b;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      display: flex;
+      padding: 20px;
+      min-height: 450px;
+    }
+
+    /* Panel lateral izquierdo */
+    .sidebar {
+      width: 20%;
+      background-color: #e9f8ef;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      border-right: 2px solid #00a86b;
+    }
+
+    .sidebar button {
+      width: 120px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #00a86b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .sidebar button:hover {
+      background-color: #008b58;
+    }
+
+    /* Contenido central */
+    .content {
+      width: 50%;
+      background-color: #d9f2e1;
+      padding: 30px;
+      text-align: center;
+      border-radius: 10px;
+      margin: 0 20px;
+    }
+
+    .content h2 {
+      color: #006b3f;
+      margin-bottom: 30px;
+    }
+
+    .info {
+      text-align: left;
+      font-size: 1.1em;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+
+    /* Panel derecho: video */
+    .video {
+      width: 30%;
+      text-align: center;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    footer {
+      background-color: #006b3f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    footer a {
+      color: #fffacd;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Encabezado con logo y título -->
+  <header>
+    <img src="img/logo_ESPE.png" alt="Logo ESPE">
+    <h1>UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE</h1>
+  </header>
+
+  <!-- Barra de navegación superior -->
+  <nav>
+    <a href="FormRegistro.html">Formulario Registro</a>
+    <a href="FormProducto.html">Formulario Producto</a>
+    <a href="#">Matrícula</a>
+    
+  </nav>
+
+  <!-- Contenedor principal -->
+  <main>
+    <!-- Panel lateral -->
+    <aside class="sidebar">
+      <button onclick="location.href='FormLoginAvanzado/index.html'">LOGIN</button>
+      <button>MATRÍCULA</button>
+    </aside>
+
+    <!-- Contenido central -->
+    <section class="content">
+      <h2>Aplicación de Tecnologías WEB</h2>
+      <div class="info">
+        <p><strong>Estudiante:</strong> __________________________</p>
+        <p><strong>NRC:</strong> __________________________</p>
+        <p><strong>Fecha:</strong> __________________________</p>
+      </div>
+    </section>
+
+    <!-- Panel derecho (video) -->
+    <aside class="video">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="Video informativo" allowfullscreen></iframe>
+    </aside>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <a href="FormContacto.html">Contacto PARTE III</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Registro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6fff9;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #006b3f;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background-color: #ffffff;
+      border: 2px solid #00a86b;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #004d2c;
+      font-weight: bold;
+    }
+
+    input[type="text"], select, textarea {
+      width: 95%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      margin: 10px 0;
+    }
+
+    .checkbox-inline {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      gap: 5px;
+    }
+
+    input[type="button"], input[type="submit"] {
+      background-color: #00a86b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    input[type="button"]:disabled {
+      background-color: #bcbcbc;
+      cursor: not-allowed;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Formulario de Registro</h2>
+
+    <!-- Cuadro 1: Dirección de envío -->
+    <div class="box">
+      <h3>DIRECCIÓN DE ENVÍO</h3>
+
+      <form id="formEnvio">
+        <label for="calle">Calle Principal:</label>
+        <input type="text" id="calle" name="calle">
+
+        <label for="transversal">Transversal:</label>
+        <input type="text" id="transversal" name="transversal">
+
+        <div class="checkbox-group">
+          <div class="checkbox-inline">
+            <input type="checkbox" id="entregaPropietario" onclick="manejarEntrega(this)">
+            <label for="entregaPropietario">Entrega al propietario</label>
+          </div>
+
+          <div class="checkbox-inline">
+            <input type="checkbox" id="entregaTercero" onclick="manejarEntrega(this)">
+            <label for="entregaTercero">Entrega a un tercero</label>
+          </div>
+        </div>
+
+        <!-- Cuadro 2: Información Confidencial -->
+        <div id="infoConfidencial" class="box hidden" style="margin-top:15px;">
+          <h3>INFORMACIÓN CONFIDENCIAL</h3>
+          <form id="formConfidencial">
+            <label for="codigoPostal">Código Postal:</label>
+            <input type="text" id="codigoPostal" name="codigoPostal">
+
+            <label for="referencia">Referencia de la Dirección:</label>
+            <textarea id="referencia" name="referencia" rows="4"></textarea>
+
+            <input type="button" id="btnGuardar" value="GUARDAR" onclick="guardarInformacion()">
+          </form>
+        </div>
+
+        <label for="cantones">Cantones:</label>
+        <select id="cantones" name="cantones">
+          <option value="">-- Seleccione --</option>
+          <option value="Quito">Quito</option>
+          <option value="Cayambe">Cayambe</option>
+          <option value="Mejía">Mejía</option>
+          <option value="Pedro Moncayo">Pedro Moncayo</option>
+        </select>
+
+        <input type="button" id="btnEnviar" value="ENVIAR DATOS" disabled onclick="alert('Datos enviados correctamente')">
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function manejarEntrega(chk) {
+      const propietario = document.getElementById('entregaPropietario');
+      const tercero = document.getElementById('entregaTercero');
+      const btnEnviar = document.getElementById('btnEnviar');
+      const infoBox = document.getElementById('infoConfidencial');
+
+      // Solo uno puede estar activo
+      if (chk === propietario && propietario.checked) {
+        tercero.checked = false;
+      } else if (chk === tercero && tercero.checked) {
+        propietario.checked = false;
+      }
+
+      // Mostrar cuadro confidencial solo si "Entrega a un tercero" está activo
+      if (tercero.checked) {
+        infoBox.classList.remove('hidden');
+        btnEnviar.disabled = true; // Desactivar enviar hasta guardar
+      } else {
+        infoBox.classList.add('hidden');
+        btnEnviar.disabled = !propietario.checked;
+      }
+    }
+
+    // Activar botón ENVIAR tras guardar datos del cuadro confidencial
+    function guardarInformacion() {
+      const codigo = document.getElementById('codigoPostal').value.trim();
+      const ref = document.getElementById('referencia').value.trim();
+      const btnEnviar = document.getElementById('btnEnviar');
+
+      if (codigo === "" || ref === "") {
+        alert("Por favor, complete todos los campos antes de guardar.");
+        return;
+      }
+
+      alert("Datos guardados correctamente.");
+      btnEnviar.disabled = false; // ahora puede enviar
+    }
+  </script>
+</body>
+</html>

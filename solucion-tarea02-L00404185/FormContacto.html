@@ -1,0 +1,18 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Contacto</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<h2>Formulario Contacto</h2>
+<form name="FormContacto" onsubmit="return validarContacto();">
+    <label>Correo: <input type="text" id="correo" name="correo"></label><br>
+    <label>Teléfono: <input type="text" id="telefono" name="telefono"></label><br>
+    <input type="button" value="Enviar" onclick="enviarContacto(this)">
+</form>
+</body>
+<script src="js/validaciones.js"></script>
+</html>
